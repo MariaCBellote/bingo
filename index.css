@@ -1,4 +1,50 @@
-table,th,td{
-    border: 1px solid black;
-    border-collapse:collapse;
+table,
+th,
+td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    align-items: center;
+
+}
+th{
+    column-span: 5;
+}
+#Bt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 40pt;
+    font-family: sans-serif;
+}
+
+
+table {
+    width: 40pt;
+    height: 40pt;
+}
+
+button {
+
+    outline: none;
+    height: 40px;
+    text-align: center;
+    width: 130px;
+    border-radius: 40px;
+    background: #fff;
+    border: 2px solid green;
+    color: green;
+    letter-spacing: 1px;
+    text-shadow: 0;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: green;
+    color: aliceblue;
 }
