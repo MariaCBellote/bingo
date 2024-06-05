@@ -1,3 +1,14 @@
+function gerarNumeros(numero, inicio, fim) {
+    var coluna = [];
+    while (coluna.length < numero) {
+        var aleatorio = Math.floor(Math.random() * (fim - inicio) + inicio);
+        if (!coluna.includes(aleatorio)) {
+            coluna.push(aleatorio);
+        }
+    }
+    return coluna;
+}
+
 function criartabela(nome) {
     // criar elementos principais
     const tabela = document.createElement("table");
@@ -9,6 +20,7 @@ function criartabela(nome) {
     th_nome.innerHTML = nome;
     th_nome.colSpan = 5; // Use 'colSpan' em vez de 'colspan'
     thead.appendChild(th_nome);
+
 
     // criando tbody
     const th_b = document.createElement("th");
@@ -30,31 +42,34 @@ function criartabela(nome) {
     tbody.appendChild(th_o);
 
     // Adicionando células à tabela
+    cartela = [gerarNumeros(5, 1, 15), gerarNumeros(5, 16, 30), gerarNumeros(5, 31, 45), gerarNumeros(5, 46, 60), gerarNumeros(5, 61, 75)];
     for (let i = 0; i < 5; i++) {
         const tr = document.createElement("tr");
         for (let u = 0; u < 5; u++) {
             const td = document.createElement("td");
-            const aleatorio=Math.floor(Math.random() * (75-1+1)) + 1;
-            td.innerHTML = aleatorio;
-            
-            tr.appendChild(td);
-            if(i==2 & u==2)
-            {
-              td.innerHTML= "LIVRE";
+
+            if (i == 2 & u == 2) {
+                td.innerHTML = "X";
             }
-            
+
+            else { td.innerHTML = cartela[u][i]; }
+            tr.appendChild(td);
+
+
         }
+
         tbody.appendChild(tr);
     }
-
+    console.log(cartela);
     // agregando elementos
     tabela.appendChild(thead);
     tabela.appendChild(tbody);
 
     // selecionando o body e inserindo tabela
-    const body = document.querySelector("body");
-    body.appendChild(tabela);
+    const tab = document.querySelector("#tab");
+    tab.appendChild(tabela);
 }
+
 
 function pedirnome() {
     let nome = prompt("Digite seu nome");
