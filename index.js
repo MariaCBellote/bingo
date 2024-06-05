@@ -1,3 +1,6 @@
+
+var jogadores=[];
+var sorteados=[];
 function gerarNumeros(numero, inicio, fim) {
     var coluna = [];
     while (coluna.length < numero) {
@@ -20,8 +23,8 @@ function criartabela(nome) {
     th_nome.innerHTML = nome;
     th_nome.colSpan = 5; // Use 'colSpan' em vez de 'colspan'
     thead.appendChild(th_nome);
-
-
+     jogadores.push(nome);
+     console.log(jogadores);
     // criando tbody
     const th_b = document.createElement("th");
     th_b.innerHTML = "B"; // Corrigido para 'th_b.innerHTML'
@@ -68,6 +71,7 @@ function criartabela(nome) {
     // selecionando o body e inserindo tabela
     const tab = document.querySelector("#tab");
     tab.appendChild(tabela);
+    
 }
 
 
@@ -76,10 +80,76 @@ function pedirnome() {
     // Verificar se o nome não é vazio ou nulo
     if (nome) {
         criartabela(nome);
+      
     } else {
         alert("Por favor, forneça um nome válido.");
     }
 }
-
 // Chamada da função pedirnome()
 
+function jogar(){
+    if(jogadores.length < 2)
+        {
+            alert("São necessários, no mínimo, dois jogadores.");
+            return;
+        }
+        else{
+             const intervalo=setInterval(function(){
+                
+                while(sorteados.length<=75)
+                    {
+                        var ale=Math.floor(Math.random()*75+1);
+                        if(!sorteados.includes(ale))
+                            {
+                                sorteados.push(ale);
+                                break;
+                                
+                            }
+                    }
+                    const span=document.getElementById('span');
+                    const spanNumero=document.createElement('span');
+                    spanNumero.innerHTML=ale;
+                    span.appendChild(spanNumero);
+                  conferir(ale); 
+                  
+            
+             },1000)
+        }
+}
+
+function conferir(sort){
+    var num_cart=document.getElementsByTagName('td');
+
+    for(var i=0;i<num_cart.length;i++)
+        {
+            if(num_cart[i].innerText==sort)
+                {
+                    num_cart[i].style.backgroundColor='rgb(54, 100, 54';
+                }
+        }
+        checar();
+
+      
+}
+
+function checar(){
+    var num=document.getElementsByTagName('td');
+    for(var i=0;i<num.length;i++)
+        {
+            if(!num[i].style.backgroundColor == 'rgb(54, 100, 54')
+                {
+                    return false;
+                }
+                
+        }
+        return true;
+}
+
+function fim(nome){
+    const vencedor=nome;
+    if(checar()==true)
+        {
+         alert(Vencedor+" venceu!");
+        }
+
+}

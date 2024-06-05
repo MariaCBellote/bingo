@@ -22,14 +22,44 @@ th{
     display: flex;
    
  }
+    h3{
+        margin:10px;
+        height: 5px;
+        font-family: sans-serif;
+        
+    }
+  #sorteio{
+   
+   margin-top: 90pt;
+   height: 100px;
+   width: 20%;
+  }
+   #span{
+     padding-top: 20px;
+     display: flex;
+     flex-wrap: wrap;
+   }
+  span{
+    padding: 20px;
+    background-color: rgb(54, 100, 54);
+    border-radius: 50%;
+    color: #fff;
+    width: 5%;
+    font-family: sans-serif;
     
-    
+  }
+   
+  
+  #main{
+    display: flex;
+  } 
  
 #Bt {
     display: flex;
     flex-direction:column;
     justify-content: center;
     align-items: center;
+    width: 70%;
     
     
 }
